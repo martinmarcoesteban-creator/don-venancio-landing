@@ -643,3 +643,37 @@
 .icon-btn:hover .fa-facebook-f {
   color: #1877F2;
 }
+
+/* Dirección centrada minimal */
+
+.contact-mini.single {
+  justify-content: center;
+  text-align: center;
+  padding: 14px 22px;
+}
+
+.mini-address {
+  font-weight: 600;
+  color: rgba(10,12,16,.78);
+  letter-spacing: .02em;
+}
+
+/* Logo antes del footer */
+
+.footer-brand {
+  display: flex;
+  justify-content: center;
+  margin-top: 26px;
+}
+
+.footer-brand img {
+  height: 48px;
+  width: auto;
+  opacity: 0.85;
+  transition: opacity .2s ease, transform .2s ease;
+}
+
+.footer-brand img:hover {
+  opacity: 1;
+  transform: translateY(-2px);
+}
