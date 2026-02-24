@@ -317,25 +317,86 @@
     margin-top: 22px;
   }
   
-  .feature{
-    border: 1px solid rgba(0,0,0,.08);
-    background: rgba(255,255,255,.92);
-    border-radius: var(--radius2);
-    padding: 18px;
-    box-shadow: 0 18px 40px rgba(0,0,0,.05);
-  }
-  
-  .feature h3{
-    margin: 0 0 8px;
-    font-size: 16px;
-    letter-spacing: -0.01em;
-  }
-  
-  .feature p{
-    margin: 0;
-    color: rgba(10,12,16,.68);
-    line-height: 1.6;
-  }
+
+/* responsive */
+@media (max-width: 900px){
+  .features{ grid-template-columns: 1fr; }
+}
+
+/* Tarjeta moderna */
+.feature{
+  position: relative;
+  padding: 22px;
+  border-radius: 18px;
+
+  background: rgba(255,255,255,.72);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  border: 1px solid rgba(15, 23, 42, .10);
+  box-shadow:
+    0 10px 30px rgba(15, 23, 42, .08),
+    0 1px 0 rgba(255,255,255,.7) inset;
+
+  transition: transform .22s ease, box-shadow .22s ease;
+  overflow: hidden;
+}
+
+/* brillo interno */
+.feature::before{
+  content:"";
+  position:absolute;
+  inset: 0;
+  background: radial-gradient(700px circle at 20% 20%,
+    rgba(99, 102, 241, .14),
+    transparent 45%);
+  opacity: 0;
+  transition: opacity .25s ease;
+  pointer-events:none;
+}
+
+/* borde encendido */
+.feature::after{
+  content:"";
+  position:absolute;
+  inset:-1px;
+  border-radius: 19px;
+  border: 1px solid transparent;
+  background: linear-gradient(135deg, rgba(99,102,241,.95), rgba(34,211,238,.9)) border-box;
+
+  -webkit-mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+
+  opacity: 0;
+  filter: drop-shadow(0 0 14px rgba(99,102,241,.35));
+  transition: opacity .22s ease;
+  pointer-events:none;
+}
+
+/* hover */
+.feature:hover{
+  transform: translateY(-4px);
+  box-shadow:
+    0 18px 50px rgba(15,23,42,.14),
+    0 1px 0 rgba(255,255,255,.7) inset;
+}
+
+.feature:hover::after{ opacity: 1; }
+.feature:hover::before{ opacity: 1; }
+
+/* Tipografías */
+.feature h3{
+  margin: 0 0 8px;
+  font-size: 18px;
+  letter-spacing: -0.2px;
+}
+
+.feature p{
+  margin: 0;
+  color: rgba(15,23,42,.75);
+  line-height: 1.55;
+}
   
   /* =========================
      MARCAS con LOGOS (premium)
